@@ -22,6 +22,7 @@ setup(
     install_requires=[
         'sqlalchemy>=1.0.16',
         'six>=1.10.0',
+        'funcsigs>=1.0.2'
     ],
     extras_require={
         'dev': [
