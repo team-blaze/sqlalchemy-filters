@@ -20,6 +20,21 @@ class Field(object):
         return getattr(self.model, self.field_name)
 
 
+def get_base_model(query):
+    """Get models from query.
+
+    :param query:
+        A :class:`sqlalchemy.orm.Query` instance.
+
+    :returns:
+        A dictionary with all the models included in the query.
+    """
+    models = [col_desc['entity'] for col_desc in query.column_descriptions]
+    return {
+        model.__name__: model for model in models
+    }
+
+
 def get_query_models(query):
     """Get models from query.
 
@@ -101,7 +116,8 @@ def get_default_model(query):
     if len(query_models) == 1:
         default_model, = iter(query_models)
     else:
-        default_model = None
+        query_models = get_base_model(query).values()
+        default_model, = iter(query_models)
     return default_model
 
 
