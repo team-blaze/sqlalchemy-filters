@@ -11,8 +11,8 @@ with open(os.path.join(here, 'README.rst'), 'r', 'utf-8') as handle:
     readme = handle.read()
 
 setup(
-    name='sqlalchemy-filters',
-    version='0.8.0',
+    name='basis-sqlalchemy-filters',
+    version='0.9.0',
     description='A library to filter SQLAlchemy queries.',
     long_description=readme,
     author='Student.com',
